@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border" [ngStyle]="{ 'background': (timeStarted ? 'var(--ion-color-success)' : 'var(--ion-color-primary)') }">
+  <ion-toolbar [color]="timeStarted ? 'success' : 'primary'">
+  <app-logout-button-component slot="end"></app-logout-button-component>
+  </ion-toolbar>
+  <div class="fake-circle d-flex ion-align-items-center ion-justify-content-center">
+      <ion-select (ionChange)="select($event.target.value)" [value]="selectedMonth">
+        <ion-select-option *ngFor="let mes of meses" [value]="mes.value">
+          {{ mes.name }}
+        </ion-select-option>
+      </ion-select>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="h-100 d-flex ion-align-items-center ion-justify-content-center" *ngIf="loading; else loaded">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <ng-template #loaded>
+    <ng-container *ngIf="usages.length; else noContent">
+      <ion-grid class="mh-1 ion-no-padding">
+        <ion-row>
+          <ion-col>
+            <ion-item-group>
+              <ion-item-divider sticky class="ion-no-padding d-flex flex-flow-col" *ngIf="chartData.dataTable.length >= 2">
+                <google-chart [data]="chartData"></google-chart>
+                <!-- <ion-item class="w-100" lines="none">
+                  <ion-thumbnail class="factura d-flex ion-align-items-center ion-justify-content-center" slot="start">
+                    <ion-icon name="cloud-upload-outline"></ion-icon>
+                  </ion-thumbnail>
+                </ion-item> -->
+              </ion-item-divider>
+              <ion-item-divider class="no-border d-flex flex-flow-col ion-no-padding">
+                <app-usage-box-component
+                  *ngFor="let usage of usages"
+                  class="w-100"
+                  [timer]="usage"
+                ></app-usage-box-component>
+              </ion-item-divider>
+            </ion-item-group>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+    <ng-template #noContent>
+      <app-no-content-text-component
+        text="No hay datos"
+        color="danger"
+        icon="sad-outline"
+      ></app-no-content-text-component>
+    </ng-template>
+  </ng-template>
+</ion-content>
+
+<ion-footer>
+  <ion-grid (click)="goto(ROUTE.CHRONOMETER)">
+    <ion-row [ngStyle]="{ 'opacity': (inUse && !timeStarted) ? '0.3': '1' }">
+      <ion-col>
+        <div class="d-flex ion-justify-content-around ion-align-items-center">
+          <app-chronometer-component style="font-size: 2.0em;"></app-chronometer-component>
+          <ng-container *ngIf="!timeStarted; else showStopButton">
+            <ion-button fill="outline" (click)="start(); $event.stopPropagation()" color="success" class="ion-no-margin">
+              Comenzar
+            </ion-button>
+          </ng-container>
+          <ng-template #showStopButton>
+            <ion-button fill="outline" (click)="stop(); $event.stopPropagation()" color="danger" class="ion-no-margin">
+              Parar
+            </ion-button>
+          </ng-template>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

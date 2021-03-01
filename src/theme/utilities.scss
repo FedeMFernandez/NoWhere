@@ -1,0 +1,95 @@
+.h-100 {
+    height: 100% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.mh-100 {
+  max-height: 100% !important;
+}
+
+.mw-100 {
+  max-width: 100% !important;
+}
+
+
+.d-flex {
+    display: flex !important;
+}
+
+.ion-button-radius {
+  border-radius: 50% !important;
+  --border-radius: 50% !important;
+}
+
+.align-self-center {
+  align-self: center !important;
+}
+
+.m-1 {
+  margin: 5px !important;
+}
+
+.p-1 {
+  padding: 5px !important;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.pr-0 {
+  padding-right: 0 !important;
+}
+
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+
+.flex-flow-col {
+  flex-flow: column !important;
+}
+
+.flex-grow {
+  flex-grow: 1 !important;
+}
+
+.no-padding-start {
+  --padding-start: 0 !important;
+}
+
+.no-padding-end {
+  --padding-end: 0 !important;
+}
+
+.no-inner-padding-start {
+  --inner-padding-start: 0 !important;
+}
+
+.no-inner-padding-end {
+  --inner-padding-end: 0 !important;
+}
+
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.overflow-scroll {
+  overflow: scroll !important;
+}
+
+.no-border {
+  border: 0 !important;
+}
+
+.text-indent-1 {
+  text-indent: 0.3em !important;
+}

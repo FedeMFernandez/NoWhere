@@ -1,0 +1,35 @@
+<ion-item class="box-shadow" lines="none">
+  <ion-avatar slot="start">
+    <ion-img [src]="safeUrl(timer.user.avatarUrl)"></ion-img>
+  </ion-avatar>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-icon name="time-outline" color="success"></ion-icon>
+        </div>
+        <ion-text>
+          {{ timer.from.toLocaleString() }}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="(timer.to !== null)">
+      <ion-col>
+        <div>
+          <ion-icon name="time-outline" color="danger"></ion-icon>
+        </div>
+        <ion-text>
+          {{ timer.to.toLocaleString() }}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div slot="end">
+    <p *ngIf="timer.totalMinutes; else inUse">
+      {{ timer.totalMinutes }}'
+    </p>
+    <ng-template #inUse>
+      <ion-icon name="time" color="danger"></ion-icon>
+    </ng-template>
+  </div>
+</ion-item>

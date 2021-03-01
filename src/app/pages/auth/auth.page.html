@@ -1,0 +1,147 @@
+<ion-content>
+	<ion-grid class="h-100 d-flex flex-flow-col">
+		<ion-row>
+			<ion-col class="d-flex ion-justify-content-center">
+				<ion-img class="logo" src="./../../../assets/images/logo/logo.png">
+				</ion-img>
+			</ion-col>
+		</ion-row>
+		<ion-row class="flex-grow">
+			<ion-slides #slideContent [options]="slideOpts">
+				<ion-slide>
+					<ion-col>
+						<form [formGroup]="loginForm">
+							<ion-item>
+								<ion-icon name="mail-outline"></ion-icon>
+								<ion-input
+									formControlName="email"
+									placeholder="Email"
+									type="email"
+									clearInput
+								>
+								</ion-input>
+							</ion-item>
+							<ion-item>
+								<ion-icon name="lock-closed-outline"></ion-icon>
+								<ion-input
+									formControlName="password"
+									placeholder="Contraseña"
+									[type]="showPasswordLogin ? 'text' : 'password'"
+									clearInput
+								>
+								</ion-input>
+								<ion-icon
+									slot="end"
+									[name]="showPasswordLogin ? 'eye-off-outline' : 'eye-outline'"
+									(click)="showPasswordLogin = !showPasswordLogin"
+								></ion-icon>
+							</ion-item>
+						</form>
+					</ion-col>
+				</ion-slide>
+				<ion-slide>
+					<ion-col>
+						<form [formGroup]="registerForm">
+							<ion-item>
+								<ion-icon name="person-outline"></ion-icon>
+								<ion-input
+									formControlName="name"
+									placeholder="Nombre"
+									type="text"
+									clearInput
+								>
+								</ion-input>
+							</ion-item>
+							<ion-item>
+								<ion-icon name="mail-outline"></ion-icon>
+								<ion-input
+									formControlName="email"
+									placeholder="Email"
+									type="email"
+									clearInput
+								>
+								</ion-input>
+							</ion-item>
+							<ion-item>
+								<ion-icon name="lock-closed-outline"></ion-icon>
+								<ion-input
+									formControlName="password"
+									placeholder="Contraseña"
+									[type]="showPasswordRegister ? 'text' : 'password'"
+									clearInput
+								>
+								</ion-input>
+								<ion-icon
+									slot="end"
+									[name]="showPasswordRegister ? 'eye-off-outline' : 'eye-outline'"
+									(click)="showPasswordRegister = !showPasswordRegister"
+								></ion-icon>
+							</ion-item>
+						</form>
+					</ion-col>
+				</ion-slide>
+			</ion-slides>
+		</ion-row>
+	</ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+	<ion-slides [options]="slideOpts" #slideFooter>
+		<ion-slide>
+			<ion-grid>
+				<ion-row>
+					<ion-col class="d-flex ion-justify-content-end">
+						<ion-button
+							class="ion-no-padding"
+							fill="clear"
+							size="small"
+							(click)="slideNext()"
+						>
+							Registrarse
+						</ion-button>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-button
+							expand="block"
+							fill="solid"
+							size="medium"
+							(click)="submitLogin(loginForm.value)"
+						>
+							Ingresar
+						</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-slide>
+		<ion-slide>
+			<ion-grid>
+				<ion-row>
+					<ion-col class="d-flex">
+						<ion-button
+							class="ion-no-padding"
+							fill="clear"
+							size="small"
+							(click)="slidePrev()"
+						>
+							Ingresar
+						</ion-button>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-button
+							expand="block"
+							fill="solid"
+							size="medium"
+							(click)="submitRegister(registerForm.value)"
+						>
+							Registrarse
+						</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-slide>
+	</ion-slides>
+</ion-footer>

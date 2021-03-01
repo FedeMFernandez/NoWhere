@@ -1,0 +1,32 @@
+app-usage-box-component {
+    ion-item:nth-child(1) {
+        margin: 10px;
+        padding: 7px;
+        ion-grid {
+            ion-row > ion-col {
+                display: flex;
+                align-items: center;
+                div {
+                    display: flex;
+                    ion-icon {
+                        margin: 0 !important;
+                        font-size: 1.3em;
+                    }
+                }
+                ion-text {
+                    font-size: 1em;
+                    text-indent: 0.2em;
+                }
+            }
+        }
+        div[slot="end"] {
+            display: flex;
+            align-items: center;
+            margin: 0 !important;
+            font-size: 1.3em;
+            ion-icon {
+                margin: 0 !important;
+            }
+        }
+    }
+}

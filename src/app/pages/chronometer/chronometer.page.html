@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border" [ngStyle]="{ 'background': (timeStarted ? 'var(--ion-color-success)' : 'var(--ion-color-primary)') }">
+  <ion-toolbar [color]="timeStarted ? 'success' : 'primary'">
+      <ion-buttons slot="start">
+        <ion-back-button color="dark"></ion-back-button>
+      </ion-buttons>
+      <app-logout-button-component slot="end"></app-logout-button-component>
+  </ion-toolbar>
+  <div [ngStyle]="{ 'background': (timeStarted ? 'var(--ion-color-success-cream)' : 'var(--ion-color-primary-cream)') }" class="fake-circle"></div>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid [ngStyle]="{ 'background': (timeStarted ? 'var(--ion-color-success-cream)' : 'var(--ion-color-primary-cream)') }" class="h-100 d-flex flex-flow-col ion-no-padding">
+    <ion-row class="flex-grow">
+      <ion-col class="ion-padding d-flex ion-justify-content-center ion-align-items-center">
+        <app-chronometer-component></app-chronometer-component>
+      </ion-col>
+    </ion-row>
+    <ion-row class="half-rounded-button">
+      <ion-col>
+        <div [ngStyle]="{ 'background': timeStarted ? 'rgba(255, 0, 0, 0.2)' : 'rgba(0, 255, 0, 0.2)'}">
+          <ng-container *ngIf="!timeStarted; else showStopButton">
+            <ion-button fill="outline" (click)="start()" color="success">
+              Comenzar
+            </ion-button>
+          </ng-container>
+          <ng-template #showStopButton>
+            <ion-button fill="outline" (click)="stop()" color="danger">
+              Parar
+            </ion-button>
+          </ng-template>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
