@@ -30,7 +30,7 @@ export class ChronometerService {
         if (user) {
             this.currentUsage = this.identityService.getTimer();
             if (this.currentUsage) {
-                await threadSleep(300);
+                await threadSleep(1000);
                 this.startClock();
             } else {
                 const { docs } = await this.ngFirestore.collection(COLLECTION.TIMERS).ref
@@ -175,6 +175,9 @@ export class ChronometerService {
             },
             (error) => {
                 this.store.dispatch(clearUsage());
+                this.store.dispatch(setLoading({
+                    loading: false
+                }));
             }
         );
     }

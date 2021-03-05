@@ -15,8 +15,6 @@ import { ChronometerService } from 'src/app/commons/services/chronometer/chronom
 import { ROUTE } from './../../constants/route.constant';
 import { NavService } from './../nav.service';
 import { clearUsage } from './../../store/actions/home.actions';
-import { environment } from './../../../../environments/environment';
-import { randomColor } from 'src/app/commons/functions/random.functions';
 
 @Injectable()
 export class AuthService {
